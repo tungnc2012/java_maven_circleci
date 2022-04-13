@@ -6,7 +6,7 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
+  build:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # Be sure to update the Docker image tag below to openjdk version of your application.
@@ -20,17 +20,44 @@ jobs:
       - checkout
       # Use mvn clean and package as the standard maven build phase
       - run:
+          name: Build
+          command: mvn clean install 
+      - run:
+          name: Install dependencies
+          command: mvn dependency:go-offline
+      - save_cache:
+          key: 'dependencies-{{ checksum "pom.xml" }}'
+          paths:
+            - ~/.m2
+      - run:
+          name: Validate
+          command: mvn -B validate
+      - run:
+          name: Compile
+          command: mvn -B compile           
+      - run:
           name: Test
           command: mvn test
+  # deploy:
+  #   docker: 
+  #     - image: alpine/git
+  #   steps:
+  #     - mvn tomcat7:deploy
 
-      - run:
-          name: Build
-          command: mvn clean package
+         
+
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  build:
     jobs:
-      - nvm tomcat7:deploy
+      - build:
+          filters:
+            branches:
+              only: circleci-project-setup 
+      # - deploy:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only: master
