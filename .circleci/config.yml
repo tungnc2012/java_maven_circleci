@@ -29,10 +29,9 @@ jobs:
           key: 'dependencies-{{ checksum "pom.xml" }}'
           paths:
             - ~/.m2
-            - ls -la ~/.m2
       - run:
           name: Validate
-          command: mvn -B validate
+          command: mvn -B validate && ls -la ~/.m2
       - run:
           name: Compile
           command: mvn -B compile           
