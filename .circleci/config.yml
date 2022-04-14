@@ -20,8 +20,11 @@ jobs:
       - checkout
       # Use mvn clean and package as the standard maven build phase
       - run:
+          name: List all content from source code
+          command: pwd && ls -la
+      - run:
           name: Build
-          command: mvn clean install 
+          command: mvn clean install
       - run:
           name: Install dependencies
           command: mvn dependency:go-offline
@@ -41,9 +44,9 @@ jobs:
       - run:
           name: Validate WAR file
           command: pwd && ls -la ./target
-      - run:
-          name: Deploy to tomcat server
-          command: mvn clean install tomcat7:run
+      # - run:
+      #     name: Deploy to tomcat server
+      #     command: mvn clean install tomcat7:run
         
   # deploy:
   #   docker: 
