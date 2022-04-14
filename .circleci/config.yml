@@ -44,6 +44,10 @@ jobs:
       - run:
           name: Validate WAR file
           command: pwd && ls -la ./target
+      - run:
+          name: Copy setting file to target folder
+          command: cp /home/circleci/project/settings.xml ./target && ls -la ./target
+        
       # - run:
       #     name: Deploy to tomcat server
       #     command: mvn clean install tomcat7:run
