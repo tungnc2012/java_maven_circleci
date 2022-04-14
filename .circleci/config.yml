@@ -48,7 +48,7 @@ jobs:
     steps:
       - run:
           name: Deploy to tomcat server
-          command: mvn tomcat7:deploy
+          command: mvn tomcat7:run
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
