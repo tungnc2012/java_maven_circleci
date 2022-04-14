@@ -40,7 +40,7 @@ jobs:
           command: mvn test
       - run:
           name: Validate WAR file
-          command: ls -la 
+          command: ls -la ./target
         
   deploy:
     docker: 
