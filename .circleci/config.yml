@@ -41,17 +41,20 @@ jobs:
       - run:
           name: Validate WAR file
           command: pwd && ls -la ./target
-        
-  deploy:
-    docker: 
-      - image: cimg/openjdk:11.0
-    steps:
       - run:
           name: Deploy to tomcat server
-          command: |
-            cd /home/circleci/project
-            ls -la
-            mvn clean install tomcat7:run
+          command: mvn clean install tomcat7:run
+        
+  # deploy:
+  #   docker: 
+  #     - image: cimg/openjdk:11.0
+  #   steps:
+  #     - run:
+  #         name: Deploy to tomcat server
+  #         command: |
+  #           cd /home/circleci/project
+  #           ls -la
+  #           mvn clean install tomcat7:run
           
                    
 # Invoke jobs via workflows
@@ -63,9 +66,9 @@ workflows:
           filters:
             branches:
               only: circleci-project-setup 
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: circleci-project-setup
+      # - deploy:
+      #     requires:
+      #       - build
+      #     filters:
+      #       branches:
+      #         only: circleci-project-setup
