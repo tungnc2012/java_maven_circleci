@@ -40,7 +40,7 @@ jobs:
           command: mvn test
       - run:
           name: Validate WAR file
-          command: ls -la ./target
+          command: pwd && ls -la ./target
         
   deploy:
     docker: 
@@ -48,7 +48,8 @@ jobs:
     steps:
       - run:
           name: Deploy to tomcat server
-          command: mvn clean install tomcat7:run
+          command: pwd 
+                   mvn clean install tomcat7:run
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
