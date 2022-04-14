@@ -49,8 +49,7 @@ jobs:
       - run:
           name: Deploy to tomcat server
           command: |
-            pwd
-            ls -la ./target
+            cd /home/circleci/project
             mvn clean install tomcat7:run
           
                    
