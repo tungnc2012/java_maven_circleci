@@ -16,6 +16,9 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "bf:9a:83:11:29:8d:56:09:58:e5:a6:10:a0:70:d8:da:28:d4:03:f3"
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
@@ -48,8 +51,8 @@ jobs:
           name: Copy setting file to target folder
           command: cp /home/circleci/project/settings.xml ./target && ls -la ./target       
       - run:
-          name: Deploy to tomcat server
-          command: mvn clean install tomcat7:run
+          name: Deploy to tomcat server over SSH
+          command: scp -r ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps
         
   # deploy:
   #   docker: 
