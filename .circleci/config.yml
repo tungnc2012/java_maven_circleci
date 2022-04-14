@@ -48,8 +48,12 @@ jobs:
     steps:
       - run:
           name: Deploy to tomcat server
-          command: pwd 
-                   mvn clean install tomcat7:run
+          command: |
+            ls -la /home/circleci/project
+            cd /home/circleci/project
+            mvn clean install tomcat7:run
+          
+                   
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
