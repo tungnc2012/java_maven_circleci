@@ -31,7 +31,7 @@ jobs:
             - ~/.m2
       - run:
           name: Validate
-          command: mvn -B validate &&
+          command: mvn -B validate
       - run:
           name: Compile
           command: mvn -B compile           
