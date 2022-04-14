@@ -52,7 +52,7 @@ jobs:
           command: cp /home/circleci/project/settings.xml ./target && ls -la ./target       
       - run:
           name: Deploy to tomcat server over SSH
-          command: scp -r ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps && yes
+          command: scp -r ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps
         
   # deploy:
   #   docker: 
