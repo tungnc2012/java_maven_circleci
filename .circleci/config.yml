@@ -50,7 +50,6 @@ jobs:
           name: Deploy to tomcat server
           command: |
             pwd
-            cd ./target
             ls -la ./target
             mvn clean install tomcat7:run
           
