@@ -31,13 +31,17 @@ jobs:
             - ~/.m2
       - run:
           name: Validate
-          command: mvn -B validate && ls -la ~/.m2
+          command: mvn -B validate &&
       - run:
           name: Compile
           command: mvn -B compile           
       - run:
           name: Test
           command: mvn test
+      - run:
+          name: Validate WAR file
+          command: ls -la 
+        
   deploy:
     docker: 
       - image: cimg/openjdk:11.0
