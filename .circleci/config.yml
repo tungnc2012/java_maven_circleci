@@ -69,8 +69,7 @@ jobs:
             -F "maven2.packaging=war" \
             -F "version=1.0.0" \
             -F "maven2.asset1=@home/circleci/project/target/api.war;type=application/java-archive" \
-            -F "maven2.asset1.extension=war" \
-            http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact'
+            -F "maven2.asset1.extension=war" http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact'
           # curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' \
             # -F maven2.groupId=com.oracle.weblogic \
             # -F maven2.artifactId=wlthint3client \
