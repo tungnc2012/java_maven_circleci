@@ -58,7 +58,8 @@ jobs:
             ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com "sudo mv /tmp/api.war /opt/tomcat/webapps/ && pwd && sudo ls -la /opt/tomcat/webapps/"
       - run:
           name: Deploy artifact to nexus
-          command: 
+          command: |
+            curl -u admin:fptproject -X GET 'http://13.215.61.77:8081/service/rest/v1/components?repository=test'
             curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -F maven2.groupId=com.google.guava -F maven2.artifactId=guava -F maven2.version=24.0-jre -F maven2.asset1=/home/circleci/project/target/api.war -F maven2.asset1.extension=war
  
       
