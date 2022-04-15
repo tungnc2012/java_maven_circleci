@@ -61,7 +61,7 @@ jobs:
           command: |
             ls -la ./target
             cd ./target
-            curl -u admin:fptproject --upload-file api.war http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
+            curl -u admin:fptproject -X GET 'http://13.215.61.77:8081/service/rest/v1/components?repository=test'
 
 
       
