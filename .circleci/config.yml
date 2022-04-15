@@ -55,7 +55,7 @@ jobs:
           command: |
             ssh-keyscan -H ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com >> ~/.ssh/know_hosts
             chmod 777 ./target/api.war
-            scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/
+            scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt
         
   # deploy:
   #   docker: 
