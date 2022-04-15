@@ -59,7 +59,7 @@ jobs:
       - run:
           name: Deploy artifact to nexus
           command: 
-            cd /home/circleci/project/ && nvm deploy
+            mvn deploy:deploy-file -DgroupId=com.somecompany -DartifactId=project -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus -Durl='http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -Dfile=/home/circleci/project/target/api.war
             
             # cd /home/circleci && mkdir store-artifact
             # cd /home/circleci/store-artifact
