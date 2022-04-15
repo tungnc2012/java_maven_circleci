@@ -18,7 +18,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "bf:9a:83:11:29:8d:56:09:58:e5:a6:10:a0:70:d8:da:28:d4:03:f3"
+            - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
