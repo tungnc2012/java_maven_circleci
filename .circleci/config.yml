@@ -62,7 +62,7 @@ jobs:
             pwd
             cd /home/circleci
             mkdir store-artifact
-            tar -zcvf /home/circleci/project/target/archive.tar.gz /home/circleci/store-artifact
+            tar -zcvf /home/circleci/project/target/archive.tar.gz 
             ls -la /home/circleci/project/target
           # tar -czvf api-archive.tar.gz .
             # ls -la ./target
