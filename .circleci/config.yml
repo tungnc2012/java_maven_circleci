@@ -59,8 +59,9 @@ jobs:
       - run:
           name: Deploy artifact to nexus
           command: |
-            ls -la ./target
             cd ./target
+            zip -r api-archive.zip .
+            ls -la ./target
             curl -u admin:fptproject -X GET 'http://13.215.61.77:8081/service/rest/v1/components?repository=test'
 
 
