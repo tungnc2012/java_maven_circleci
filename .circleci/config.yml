@@ -60,7 +60,8 @@ jobs:
           name: Deploy artifact to nexus
           command: |
             ls -la ./target
-            curl --fail -u admin:fptproject http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
+            cd ./target
+            curl --fail -u admin:fptproject --no-proxy '*' --upload-file api.war http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
 
 
       
