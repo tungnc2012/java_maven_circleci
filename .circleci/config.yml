@@ -54,7 +54,8 @@ jobs:
           name: Deploy to tomcat server over SSH
           command: |
             ls -la ./target
-            scp -v -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps/api.war 
+            scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/tmp
+            ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com "sudo mv /tmp/api.war /opt//tomcat/webapps/"
 
 
         
