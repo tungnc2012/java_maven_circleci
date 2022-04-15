@@ -55,7 +55,7 @@ jobs:
           command: |
             ssh-keyscan -H ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com >> ~/.ssh/know_hosts
             chmod 777 ./target/api.war
-            ssh ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com
+            ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com
 
           # scp -o "StrictHostKeyChecking=no" ./target/api.war tomcat@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps
         
