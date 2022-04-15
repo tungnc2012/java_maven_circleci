@@ -56,8 +56,11 @@ jobs:
             ls -la ./target
             scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/tmp
             ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com "sudo mv /tmp/api.war /opt/tomcat/webapps/ && pwd && sudo ls -la /opt/tomcat/webapps/"
+      - run:
+          name: Deploy artifact to nexus
+          command: mvn clean deploy
 
-
+      
         
   # deploy:
   #   docker: 
