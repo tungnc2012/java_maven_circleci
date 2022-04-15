@@ -59,7 +59,6 @@ jobs:
       - run:
           name: Deploy artifact to nexus
           command: 
-            #curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -DgroupId=com.somecompany -DartifactId=project -Dversion=1.0.0 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus -Dfile=/home/circleci/project/target/api.war
             curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -F maven2.groupId=com.google.guava -F maven2.artifactId=guava -F maven2.version=24.0-jre -F maven2.asset1=/home/circleci/project/target/api.war -F maven2.asset1.extension=war
  
       
