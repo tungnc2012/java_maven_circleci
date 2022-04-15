@@ -62,8 +62,9 @@ jobs:
             pwd
             cd /home/circleci
             mkdir store-artifact
-            tar -zcvf /home/circleci/project/target/archive.tar.gz 
-            ls -la /home/circleci/project/target
+            cd /home/circleci/store-artifact
+            tar -zcvf archive.tar.gz /home/circleci/project/target/
+            ls -la /home/circleci/store-artifact
           # tar -czvf api-archive.tar.gz .
             # ls -la ./target
             # curl --fail -u admin:fptproject --upload-file api-archive.tar.gz http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
