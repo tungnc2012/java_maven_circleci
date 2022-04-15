@@ -62,7 +62,7 @@ jobs:
             cd /home/circleci && mkdir store-artifact
             cd /home/circleci/store-artifact
             tar -zcvf api-archive.tar.gz /home/circleci/project/target/ && ls -la /home/circleci/store-artifact
-            curl -v -u admin:fptproject -X POST 'http://http://13.215.61.77:8081//service/rest/v1/components?repository=store-artifact' \
+            curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' \
             -F maven2.groupId=com.oracle.weblogic \
             -F maven2.artifactId=wlthint3client \
             -F maven2.version=10.3.6.0 \
