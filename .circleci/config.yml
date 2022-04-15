@@ -54,7 +54,7 @@ jobs:
           name: Deploy to tomcat server over SSH
           command: |
             ls -la ./target
-            scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/opt/tomcat/webapps
+            scp -o "StrictHostKeyChecking=no" ./target/api.war ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com:/tmp
         
   # deploy:
   #   docker: 
