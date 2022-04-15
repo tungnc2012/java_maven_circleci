@@ -61,7 +61,7 @@ jobs:
           command: |
             cd ./target
             tar -czvf api-archive.tar.gz .
-            ls -la
+            ls -la ./target
             curl --fail -u admin:fptproject --upload-file api-archive.tar.gz http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
             
             
