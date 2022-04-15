@@ -58,10 +58,10 @@ jobs:
             ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com "sudo mv /tmp/api.war /opt/tomcat/webapps/ && pwd && sudo ls -la /opt/tomcat/webapps/"
       - run:
           name: Deploy artifact to nexus
-          command: |
-            cd /home/circleci && mkdir store-artifact
-            cd /home/circleci/store-artifact
-            tar -zcvf api-archive.tar.gz /home/circleci/project/target/ && ls -la /home/circleci/store-artifact
+          command: 
+            # cd /home/circleci && mkdir store-artifact
+            # cd /home/circleci/store-artifact
+            # tar -zcvf api-archive.tar.gz /home/circleci/project/target/ && ls -la /home/circleci/store-artifact
             curl -v -u admin:fptproject  -F "maven2.generate-pom=true" -F "maven2.groupId=com.example" -F "maven2.artifactId=commercial-product" -F "maven2.packaging=war" -F "version=1.0.0" -F "maven2.asset1=@home/circleci/project/target/api.war;type=application/java-archive" -F "maven2.asset1.extension=war" http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact'
           # curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' \
             # -F maven2.groupId=com.oracle.weblogic \
