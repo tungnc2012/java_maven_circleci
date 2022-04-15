@@ -58,7 +58,7 @@ jobs:
             ssh -o "StrictHostKeyChecking=no" ubuntu@ec2-54-151-223-91.ap-southeast-1.compute.amazonaws.com "sudo mv /tmp/api.war /opt/tomcat/webapps/ && pwd && sudo ls -la /opt/tomcat/webapps/"
       - run:
           name: Deploy artifact to nexus
-          command: mvn clean deploy
+          command: curl --fail -u admin:fptproject http://13.215.61.77:8081/service/rest/repository/browse/store-artifact/
 
       
         
