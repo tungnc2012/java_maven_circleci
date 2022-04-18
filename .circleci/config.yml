@@ -26,24 +26,24 @@ jobs:
           name: List all content from source code
           command: pwd && ls -la
       - run:
-          name: Build
-          command: mvn clean install
-      - run:
           name: Install dependencies
           command: mvn dependency:go-offline
       - save_cache:
           key: 'dependencies-{{ checksum "pom.xml" }}'
           paths:
-            - ~/.m2
+            - ~/.m2          
       - run:
           name: Validate
           command: mvn -B validate
       - run:
           name: Compile
-          command: mvn -B compile           
+          command: mvn -B compile                
       - run:
           name: Test
           command: mvn test
+      - run:
+          name: Install
+          command: mvn clean install
       - run:
           name: Validate WAR file
           command: pwd && ls -la ./target && chmod 755 ./target/api.war
