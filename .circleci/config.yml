@@ -17,16 +17,16 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     working_directory:  ~/ci
     steps:
-      - save_cache:
-          key: 'dependencies-{{ checksum "pom.xml" }}'
-          paths:
-            - ~/.m2 
       - add_ssh_keys:
           fingerprints:
             - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
+      - save_cache:
+          key: 'dependencies-{{ checksum "pom.xml" }}'
+          paths:
+            - ~/.m2 
       - run:
           name: List all content from source code
           command: pwd && ls -la
