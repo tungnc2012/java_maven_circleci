@@ -29,10 +29,9 @@ jobs:
           # Must be absolute path or relative path from working_directory
           at: /home/circleci/project
       - run: pwd && ls -la
-      - run: cd /home/circleci/project/project
       - run:
           name: List all content from source code
-          command: pwd && ls -la
+          command: cd /home/circleci/project/project && ls -la
       - run:
           name: Install dependencies
           command: mvn dependency:go-offline        
