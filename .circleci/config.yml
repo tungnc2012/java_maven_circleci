@@ -56,7 +56,7 @@ jobs:
           command: pwd && ls -la ./target && chmod 755 ./target/api.war    
       - run:
           name: Zip artifact & verify
-          command: zip -r artifact.zip ./target && ls -la ./target
+          command: pwd && zip -r artifact.zip ./target 
       - run:
           name: Deploy to tomcat server over SSH
           command: |
