@@ -8,12 +8,10 @@ executors:
 jobs:
   build:
     executor: my-executor
-    working_directory: /tmp
     steps:
       - add_ssh_keys:
           fingerprints:
             - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
-      - run: cd
       - checkout
       # - save_cache:
       #     key: 'dependencies-{{ checksum "pom.xml" }}'
