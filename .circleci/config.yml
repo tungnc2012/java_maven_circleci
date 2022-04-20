@@ -28,10 +28,10 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /home/circleci/project
-      - run: pwd && ls -la
       - run:
           name: List all content from source code
-          command: cd /home/circleci/project/project && ls -la
+          command: /home/circleci/project/project ls -la /home/circleci/project/project
+      - run: cp /home/circleci/project/project /home/circleci/project && pwd && ls -la
       - run:
           name: Install dependencies
           command: mvn dependency:go-offline        
