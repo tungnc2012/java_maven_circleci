@@ -29,9 +29,12 @@ jobs:
           # Must be absolute path or relative path from working_directory
           at: /home/circleci/project
       - run:
-          name: List all content from source code
+          name: Copy from workspace to build folder
           command: ls -la /home/circleci/project/project && ls -la /home/circleci/project/
       - run: cd /home/circleci/project/project && cp -r . /home/circleci/project/
+      - run:
+          name: Verify source code
+          command: ls -la
       - run:
           name: Install dependencies
           command: mvn dependency:go-offline        
