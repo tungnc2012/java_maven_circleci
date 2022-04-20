@@ -14,9 +14,10 @@ jobs:
     executor: my-executor
     steps:
       - run: mkdir -p workspace
+      - run: cd /workspace && mkdir test-folder
       - run: ls -la
       - run: echo "Hello, world!" > workspace/echo-output
-      - run: echo "Test file" > test-file.txt && mv test-file.txt workspace/output-for-downstream-job
+      - run: echo "Test file" > test-file.txt && mv workspace/test-folder/test-file.txt workspace/output-for-downstream-job
       - run: touch test-file.1
       - run: pwd && ls -la
 
@@ -36,7 +37,7 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /tmp/workspace
-      - run: cd /tmp/workspace/ && ls -la && cat output-for-downstream-job
+      - run: cd /tmp/workspace/ && ls -la
       
       - run: |
           if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then
