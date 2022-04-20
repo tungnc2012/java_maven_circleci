@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: mkdir -p workspace
       - run: ls -la
-      - run: cd /workspace && mkdir test-folder
+      - run: cd workspace && mkdir test-folder
       - run: ls -la
       - run: echo "Hello, world!" > workspace/echo-output
       - run: echo "Test file" > test-file.txt && mv workspace/test-folder/test-file.txt workspace/output-for-downstream-job
