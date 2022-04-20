@@ -18,7 +18,7 @@ jobs:
       - run: cd workspace && mkdir test-folder
       - run: ls -la workspace
       - run: echo "Hello, world!" > workspace/echo-output
-      - run: echo "Test file" > workspace/test-folder/test-file.txt && ls -la workspace/test-folder
+      - run: echo "Test file" > workspace/test-folder/test-file.txt && ls -la workspace/test-folder && cat workspace/test-folder/test-file.txt
       - run: touch test-file.1
       - run: pwd && ls -la
 
@@ -30,15 +30,14 @@ jobs:
           # Must be relative path from root
           paths:
             - echo-output
-            - output-for-downstream-job
-
+            - test-folder
   downstream:
     executor: my-executor
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /tmp/workspace
-      - run: cd /tmp/workspace/ && ls -la
+      - run: cd /tmp/workspace/test-folder && ls -la
       
       - run: |
           if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then
