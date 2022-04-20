@@ -5,12 +5,14 @@ executors:
   my-executor:
     docker:
       - image: cimg/openjdk:11.0
+    working_directory: /tmp    
 jobs:
   checkout-code:
     executor: my-executor
     
     steps:
       - run: pwd
+      - run: cd /home/circleci/project
       - add_ssh_keys:
           fingerprints:
             - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
