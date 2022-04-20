@@ -60,9 +60,12 @@ jobs:
           event: pass
           template: success_tagged_deploy_1
 workflows:
-  build-code:
+  checkout-code-and-build:
     jobs:
-      - checkout
+      - checkout-code:
+          filters:
+            branches:
+              only: sit
       - build:
           filters:
             branches:
