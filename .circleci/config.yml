@@ -5,17 +5,17 @@ executors:
   my-executor:
     docker:
       - image: cimg/openjdk:11.0
-    working_directory: /tmp
 jobs:
-  build:
+  checkout-code:
     executor: my-executor
     steps:
       - add_ssh_keys:
           fingerprints:
             - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
-      - run: cd /home/circleci/
       - checkout
-
+  build:
+    executor: my-executor
+    steps:
       - run:
           name: List all content from source code
           command: pwd && ls -la
@@ -60,8 +60,9 @@ jobs:
           event: pass
           template: success_tagged_deploy_1
 workflows:
-  build:
+  build-code:
     jobs:
+      - checkout
       - build:
           filters:
             branches:
