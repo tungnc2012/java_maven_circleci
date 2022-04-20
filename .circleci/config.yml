@@ -55,6 +55,9 @@ jobs:
           name: Validate WAR file
           command: pwd && ls -la ./target && chmod 755 ./target/api.war    
       - run:
+          name: Zip artifact
+          command: zip -r artifact.zip ./target
+      - run:
           name: Deploy to tomcat server over SSH
           command: |
             ls -la ./target
