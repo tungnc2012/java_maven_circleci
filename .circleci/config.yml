@@ -20,7 +20,7 @@ jobs:
           root: /home/circleci/
           paths:
           - project
-      - run: ls -la      
+      - run: ls -la /home/circleci/project 
   build:
     executor: my-executor
     steps:
