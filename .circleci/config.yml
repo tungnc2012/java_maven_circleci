@@ -16,9 +16,9 @@ jobs:
       - run: mkdir -p workspace
       - run: ls -la
       - run: cd workspace && mkdir test-folder
-      - run: ls -la
+      - run: ls -la workspace
       - run: echo "Hello, world!" > workspace/echo-output
-      - run: echo "Test file" > test-file.txt && mv workspace/test-folder/test-file.txt workspace/output-for-downstream-job
+      - run: echo "Test file" > workspace/test-folder/test-file.txt && ls -la workspace/test-folder
       - run: touch test-file.1
       - run: pwd && ls -la
 
