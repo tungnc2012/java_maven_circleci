@@ -15,6 +15,8 @@ jobs:
     steps:
       - run: mkdir -p workspace
       - run: echo "Hello, world!" > workspace/echo-output
+      - run: touch test-file.txt && mv test-file.txt workspace/echo-output
+      - run: touch test-file.1
 
       # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job.
       - persist_to_workspace:
@@ -38,6 +40,7 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
+      - run: cd /tmp/workspace/echo-output && ls -la
 
 workflows:
   btd:
