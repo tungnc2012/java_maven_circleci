@@ -33,14 +33,13 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /tmp/workspace
-
+      - run: cd /tmp/workspace/echo-output && ls -la
       - run: |
           if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then
             echo "It worked!";
           else
             echo "Nope!"; exit 1
           fi
-      - run: cd /tmp/workspace/echo-output && ls -la
 
 workflows:
   btd:
