@@ -30,8 +30,8 @@ jobs:
           at: /home/circleci/project
       - run:
           name: List all content from source code
-          command: ls -la /home/circleci/project/project
-      - run: cp -r /home/circleci/project/project /home/circleci/project && pwd && ls -la
+          command: ls -la /home/circleci/project/project && ls -la /home/circleci/project/
+      - run: cd /home/circleci/project/project && cp . /home/circleci/project/
       - run:
           name: Install dependencies
           command: mvn dependency:go-offline        
