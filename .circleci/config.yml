@@ -28,7 +28,7 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: /home/circleci/project
-      - run: cd /home/circleci/project
+      - run: pwd && cd /home/circleci/project
       - run:
           name: List all content from source code
           command: pwd && ls -la
