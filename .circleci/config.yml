@@ -8,13 +8,14 @@ executors:
 jobs:
   checkout-code:
     executor: my-executor
+    working_directory: /tmp
     steps:
       - add_ssh_keys:
           fingerprints:
             - "0f:b3:05:30:eb:c4:f7:0d:aa:1e:9d:ff:e4:ad:ee:28"
       - checkout
       - persist_to_workspace:
-          root: /root
+          root: /tmp
           paths:
             - project
       - run: ls -la      
