@@ -67,7 +67,7 @@ jobs:
           name: Deploy artifact to nexus
           command: |
             curl -u admin:fptproject -X GET 'http://13.215.61.77:8081/service/rest/v1/components?repository=test'
-            curl --fail -u admin:fptproject --upload-file /home/circleci/project/artifact.zip 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact'
+            curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -F maven2.groupId=com.google.guava -F maven2.artifactId=guava -F maven2.version=24.0-jre -F maven2.asset1=/home/circleci/project/target/api.war -F maven2.asset1.extension=war
       - slack/notify:
           event: fail
           channel: $SLACK_DEFAULT_CHANNEL
@@ -82,12 +82,16 @@ workflows:
       - checkout-code:
           filters:
             branches:
-              only: sit
+              only:
+                - sit 
+                - master
       - build:
           requires:
             - checkout-code
           filters:
             branches:
-              only: sit
+              only: 
+                - sit 
+                - master
 #Test
 # curl -v -u admin:fptproject -X POST 'http://13.215.61.77:8081/service/rest/v1/components?repository=store-artifact' -F maven2.groupId=com.google.guava -F maven2.artifactId=guava -F maven2.version=24.0-jre -F maven2.asset1=/home/circleci/project/target/api.war -F maven2.asset1.extension=war
