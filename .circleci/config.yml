@@ -46,9 +46,6 @@ jobs:
           name: Test
           command: mvn test
       - run:
-          name: Check code coverage
-          command: mvn clean test
-      - run:
           name: Install
           command: mvn clean install
       - run:
@@ -96,9 +93,6 @@ jobs:
       - run:
           name: Compile
           command: mvn -B compile                
-      - run:
-          name: Test
-          command: mvn test
       - run:
           name: Check code coverage
           command: mvn clean test
