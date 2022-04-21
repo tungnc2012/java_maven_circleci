@@ -84,7 +84,6 @@ workflows:
             branches:
               only:
                 - sit 
-                - master
       - build:
           requires:
             - checkout-code
